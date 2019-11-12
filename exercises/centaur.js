@@ -12,7 +12,7 @@ class Centaur {
 
     doThing(phrase) {
       this.crankyCount++;
-      if (this.cranky) {
+      if (this.cranky  || this.layingDown) {
         return 'NO!';
       }
       else {
@@ -34,16 +34,31 @@ class Centaur {
       if (this.standing) {
         return 'NO!';
       }
+      else {
+        this.crankyCount = 0;
+        this.cranky = false;
+        return 'ZZZZ'
+      }
     }
 
     layDown() {
       this.standing = false;
+      this.layingDown = true;
+    }
+
+    standUp() {
+      this.standing = true;
       this.layingDown = false;
     }
 
-    layDown() {
-      this.standing = false;
-      this.layingDown = false;
+    drinkPotion() {
+      if (this.layingDown) {
+        return 'Not while I\'m laying down!';
+      }
+      else {
+        this.crankyCount = 0;
+        this.cranky = !this.cranky;
+      }
     }
 
 }
