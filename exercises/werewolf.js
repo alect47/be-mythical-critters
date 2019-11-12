@@ -1,12 +1,12 @@
 class Werewolf {
   // Think of a constructor as being similar to initialize in Ruby
   // Instead of setting attributes like @name = name in JavaScript we say this.name = name
-  constructor(name, location = null, human = true, wolf = false, hungry = false) {
+  constructor(name, location = null) {
     this.name = name;
     this.location = location;
-    this.human = human;
-    this.wolf = wolf;
-    this.hungry = hungry;
+    this.human = true;
+    this.wolf = false;
+    this.hungry = false;
   }
 
     change() {
@@ -16,10 +16,8 @@ class Werewolf {
     }
 
     eat(victim) {
-      if (this.hungry && this.hungry) {
-        this.human = true;
-        this.wolf = false;
-        this.hungry = false;
+      if (this.hungry && this.wolf) {
+        this.change();
         victim.alive = false;
         return 'YUM!';
       }
