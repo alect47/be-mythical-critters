@@ -20,14 +20,6 @@ class Medusa {
       }
     }
 
-  // isWhite() {
-  //   if (this.color !== 'white') {
-  //     return false;
-  //   }
-  //   else {
-  //     return true;
-  //   }
-  // }
 
   says(message) {
     return `**;* ${message} *;**`;
