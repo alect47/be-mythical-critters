@@ -4,6 +4,7 @@ class Sphinx {
   constructor(name = null) {
     this.name = name;
     this.riddles = [];
+    this.heroesEaten = 0;
   }
 
   collectRiddle(riddle) {
@@ -17,8 +18,18 @@ class Sphinx {
   }
 
   attemptAnswer(solution) {
-      let newRiddles = this.riddles.filter(riddle => riddle.answer != solution)
-      this.riddles = newRiddles
+      let oldRiddlesLength = this.riddles.length
+      let newRiddles = this.riddles.filter(riddle => riddle.answer != solution);
+      this.riddles = newRiddles;
+      if (this.riddles.length == oldRiddlesLength) {
+        this.heroesEaten++;
+      }
+      else if (this.riddles.length == 0) {
+        return `PSSSSSSS THIS HAS NEVER HAPPENED, HOW DID YOU KNOW THE ANSWER WAS "${solution}"???`;
+      }
+      else {
+        return 'That wasn\'t that hard, I bet you don\'t get the next one';
+      }
   }
 
 }
